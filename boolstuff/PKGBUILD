@@ -13,6 +13,7 @@ md5sums=('3eb0aa4bf24e215700c9cba30a648969')
 
 build() {
   cd $startdir/src/$pkgname-$pkgver &&
+  patch -p0 < $startdir/boolstuff.diff &&
   ./configure --prefix=/usr --localstatedir=/var
   make &&
   make prefix=$startdir/pkg/usr install
