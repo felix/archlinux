@@ -1,0 +1,30 @@
+# Contributor: Felix <felix@seconddrawer.com.au>
+pkgname=boolstuff
+pkgver=0.1.12
+pkgrel=1
+pkgdesc="BoolStuff is a C++ library that supports a few operations on boolean expression binary trees"
+arch=('i686' 'x86_64')
+url="http://perso.b2b2c.ca/sarrazip/dev/boolstuff.html"
+license=('GPL')
+groups=('science')
+depends=('gcc-libs')
+makedepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+source=(http://perso.b2b2c.ca/sarrazip/dev/$pkgname-$pkgver.tar.gz)
+noextract=()
+md5sums=('3eb0aa4bf24e215700c9cba30a648969')
+
+build() {
+  cd $startdir/src/$pkgname-$pkgver &&
+  ./configure --prefix=/usr --localstatedir=/var
+  make &&
+  make prefix=$startdir/pkg/usr install
+}
+
+# vim:set ts=2 sw=2 et:

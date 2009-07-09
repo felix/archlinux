@@ -1,0 +1,5 @@
+#/bin/sh
+
+infodir=/usr/share/info
+
+install-info $infodir/halevt.info $infodir/dir
