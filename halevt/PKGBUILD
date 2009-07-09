@@ -1,30 +1,23 @@
-# Contributor: Felix <felix@seconddrawer.com.au>
+# Contributor: Felix Hanley <felix@seconddrawer.com.au>
 pkgname=halevt
 pkgver=0.1.4
 pkgrel=3
-pkgdesc="Halevt (HAL events manager) is a daemon that executes arbitrary commands when a device with certain properties is added to the system and when device properties change"
+pkgdesc="A daemon that executes arbitrary commands on HAL events"
 arch=('i686' 'x86_64')
-url="http://www.environnement.ens.fr/perso/dumas/halevt.html"
+url="http://www.nongnu.org/halevt/"
 license=('GPL')
 groups=('daemons')
 depends=('hal' 'boolstuff' 'libxml2')
-makedepends=()
 optdepends=('pmount')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
 install=halevt.install
-source=(http://www.environnement.ens.fr/perso/dumas/halevt-download/$pkgname-$pkgver.tar.gz)
-noextract=()
+source=(http://savannah.nongnu.org/download/halevt/$pkgname-$pkgver.tar.gz)
 md5sums=('b60879d213bc2d3243852c515b834264')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 < $srcdir/config-file.patch
   ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib  --localstatedir=/var
   make || return 1
   make DESTDIR="$pkgdir/" install
   rm ${startdir}/pkg/usr/share/info/dir
 }
+
 # vim:set ts=2 sw=2 et:
