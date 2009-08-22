@@ -1,23 +1,26 @@
 # Contributor: Felix Hanley <felix@seconddrawer.com.au>
 pkgname=halevt
 pkgver=0.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A daemon that executes arbitrary commands on HAL events"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.nongnu.org/halevt/"
 license=('GPL')
 groups=('daemons')
 depends=('hal' 'boolstuff' 'libxml2')
 optdepends=('pmount')
 install=halevt.install
-source=(http://savannah.nongnu.org/download/halevt/$pkgname-$pkgver.tar.gz)
-md5sums=('b60879d213bc2d3243852c515b834264')
+source=(http://savannah.nongnu.org/download/halevt/$pkgname-$pkgver.tar.gz
+  halevt.rc)
+md5sums=('b60879d213bc2d3243852c515b834264'
+  '0e3c09a7a3f47205812eecde766a437c')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib  --localstatedir=/var
   make || return 1
   make DESTDIR="$pkgdir/" install
   rm ${startdir}/pkg/usr/share/info/dir
+  install -m755 -D $startdir/halevt.rc $startdir/pkg/etc/rc.d/halevt || return 1
 }
 
 # vim:set ts=2 sw=2 et:

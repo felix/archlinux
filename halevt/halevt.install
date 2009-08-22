@@ -1,5 +1,23 @@
-#/bin/sh
+#/bin/bash
 
-infodir=/usr/share/info
+post_install() {
+  infodir=/usr/share/info
+  install-info $infodir/halevt.info $infodir/dir
+  if [-z "`getent group halevt`"]; then
+    groupadd halevt
+  fi
+  if [-z "`getent passwd halevt`"]; then
+    useradd -c 'Halevt system user' -g halevt -d '/var/lib/halevt' -s '/bin/false' halevt
+  fi
+  chown halevt:halevt /var/lib/halevt /var/run/halevt
+  echo ">> halevt: default configuration installed at /usr/share/halevt/halevt.xml"
+}
 
-install-info $infodir/halevt.info $infodir/dir
+pre_remove() {
+  killall halevt
+}
+
+post_remove() {
+  userdel halevt &> /dev/null
+  groupdel halevt &> /dev/null
+}
