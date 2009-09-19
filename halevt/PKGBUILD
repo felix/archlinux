@@ -1,7 +1,7 @@
 # Contributor: Felix Hanley <felix@seconddrawer.com.au>
 pkgname=halevt
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon that executes arbitrary commands on HAL events"
 arch=('any')
 url="http://www.nongnu.org/halevt/"
