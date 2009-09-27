@@ -1,24 +1,14 @@
-# Contributor: Felix <felix@seconddrawer.com.au>
+# Contributor: Felix Hanley <felix@seconddrawer.com.au>
 pkgname=spawn-fcgi
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Fast CGI process spawner"
-arch=(i686 x86_64)
+arch=(any)
 url="http://redmine.lighttpd.net/projects/spawn-fcgi"
 license=('GPL')
-groups=()
 depends=(glibc)
-makedepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
 source=(http://www.lighttpd.net/download/$pkgname-$pkgver.tar.gz)
-noextract=()
-md5sums=(e11fe80bf9e59ab4ab39797181eafab6)
+md5sums=(6d75f9e9435056fa1e574d836d823cd0)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
