@@ -19,7 +19,7 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib  --localstatedir=/var
   make || return 1
   make DESTDIR="$pkgdir/" install
-  rm ${startdir}/pkg/usr/share/info/dir
+#  rm ${startdir}/pkg/usr/share/info/dir
   install -m755 -D $startdir/halevt.rc $startdir/pkg/etc/rc.d/halevt || return 1
   mkdir -p $startdir/pkg/usr/share/$pkgname/examples
   cp $srcdir/$pkgname-$pkgver/examples/*.{xml,sh} $startdir/pkg/usr/share/$pkgname/examples/

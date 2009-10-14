@@ -1,0 +1,20 @@
+# Contributor: Felix Hanley <felix@seconddrawer.com.au>
+pkgname=dictd-moby-thesaurus
+pkgver=1.0
+pkgrel=1
+pkgdesc="Moby thesaurus for dict"
+arch=('any')
+url="http://www.dict.org"
+license=('none')
+depends=('dictd')
+makedepends=('python-dictdlib' 'unzip')
+source=('http://www.ibiblio.org/pub/docs/books/gutenberg/etext02/mthes10.zip')
+md5sums=('33568ffe72a86a7c8ab93047ae7e880c')
+
+build() {
+  cd $startdir/src/
+  python ../convert.py < mthesaur.txt
+  dictzip moby-thesaurus.dict
+  install -D -m 0644 $startdir/src/moby-thesaurus.dict.dz $startdir/pkg/usr/share/dictd/moby-thesaurus.dict.dz
+  install -D -m 0644 $startdir/src/moby-thesaurus.index $startdir/pkg/usr/share/dictd/moby-thesaurus.index
+}
