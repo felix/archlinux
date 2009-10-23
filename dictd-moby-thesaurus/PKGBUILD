@@ -8,9 +8,12 @@ url="http://www.dict.org"
 license=('none')
 depends=('dictd')
 makedepends=('python-dictdlib' 'unzip')
-source=('http://www.ibiblio.org/pub/docs/books/gutenberg/etext02/mthes10.zip')
-md5sums=('33568ffe72a86a7c8ab93047ae7e880c')
-
+source=('http://www.ibiblio.org/pub/docs/books/gutenberg/etext02/mthes10.zip'
+        'convert.py'
+        'introduction.txt')
+md5sums=('33568ffe72a86a7c8ab93047ae7e880c'
+         'da334d7b49437ddc5e00a718a9f46e1d'
+         'ae9add5c1f62186ffb8f890db00f3da8')
 build() {
   cd $startdir/src/
   python ../convert.py < mthesaur.txt
