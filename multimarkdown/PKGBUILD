@@ -1,7 +1,7 @@
 # Contributor: Felix Hanley <felix@seconddrawer.com.au>
 
 pkgname=multimarkdown-git
-pkgver=20090829
+pkgver=20091125
 pkgrel=1
 pkgdesc="Expanded perl version of John Gruber's original Markdown"
 depends=('perl')

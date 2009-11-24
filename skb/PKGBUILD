@@ -1,0 +1,22 @@
+# Maintainer: muhas <muhas@muhas.ru>
+pkgname=skb
+pkgver=0.2
+pkgrel=1
+pkgdesc="A simple keyboard layout indicator. Too simple, really. It prints the name of layout to its output, nothing more."
+arch=('any')
+url=('http://www.rootshell.be/~polachok/code/')
+license=('GPL')
+source=('http://www.rootshell.be/~polachok/code/skb.tar.gz')
+
+md5sums=('46cfa1838dd51c77223812f620f41005')
+
+build() {
+ 
+  cd $srcdir/skb
+  sed -i -e '/dmenu/ d' $srcdir/skb/Makefile
+  make || return 1
+  make DESTDIR=$startdir/pkg PREFIX=/usr install || return 1
+}
+
+
+
