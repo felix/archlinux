@@ -1,13 +1,14 @@
 # Contributor: Felix Hanley <felix@seconddrawer.com.au>
 pkgname=boolstuff
 pkgver=0.1.12
-pkgrel=2
+pkgrel=3
 pkgdesc="A C++ library that supports a few operations on boolean expression binary trees"
 arch=('i686' 'x86_64')
 url="http://perso.b2b2c.ca/sarrazip/dev/boolstuff.html"
 license=('GPL')
 groups=('science')
 depends=('gcc-libs')
+makedepends=('patch')
 source=(http://perso.b2b2c.ca/sarrazip/dev/$pkgname-$pkgver.tar.gz)
 md5sums=('3eb0aa4bf24e215700c9cba30a648969')
 
