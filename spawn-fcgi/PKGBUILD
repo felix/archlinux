@@ -1,9 +1,9 @@
 # Contributor: Felix Hanley <felix@seconddrawer.com.au>
 pkgname=spawn-fcgi
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast CGI process spawner"
-arch=(any)
+arch=('i686' 'x86_64')
 url="http://redmine.lighttpd.net/projects/spawn-fcgi"
 license=('GPL')
 depends=(glibc)

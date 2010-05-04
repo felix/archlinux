@@ -1,9 +1,9 @@
 # Contributor: Felix Hanley <felix@seconddrawer.com.au>
 pkgname=halevt
-pkgver=0.1.5
-pkgrel=2
+pkgver=0.1.6.1
+pkgrel=1
 pkgdesc="A daemon that executes arbitrary commands on HAL events"
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://www.nongnu.org/halevt/"
 license=('GPL')
 depends=('hal' 'boolstuff' 'libxml2')
@@ -12,7 +12,7 @@ optdepends=('pmount')
 install=halevt.install
 source=(http://savannah.nongnu.org/download/halevt/$pkgname-$pkgver.tar.gz
   halevt.rc)
-md5sums=('7faf2e2fdfe9535e64304c361e1fd0e7'
+md5sums=('005f0c8969b0f86d261d85ea03062fde'
          '0e3c09a7a3f47205812eecde766a437c')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
