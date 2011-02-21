@@ -1,0 +1,44 @@
+# Maintaner: Felix Hanley <felix@seconddrawer.com.au>
+pkgname=('shorewall-lite' 'shorewall6-lite')
+pkgver=4.4.17
+pkgrel=1
+arch=('any')
+url="http://www.shorewall.net/"
+license=('GPL')
+source=(http://www.shorewall.net/pub/shorewall/4.4/shorewall-$pkgver/shorewall-lite-$pkgver.tar.bz2
+        http://www.shorewall.net/pub/shorewall/4.4/shorewall-$pkgver/shorewall6-lite-$pkgver.tar.bz2)
+md5sums=('51dd693cecfc8ddf4e2fae00cfd17a6d'
+         '57deb49ba7c74c14fc5da0beff3d31cc')
+
+package_shorewall-lite() {
+  pkgdesc="An iptables-based firewall for Linux systems ('lite' version)"
+  depends=('iptables' 'iproute2')
+
+  cd "$srcdir/$pkgname-$pkgver"
+
+  do_install configfiles/
+}
+
+package_shorewall6-lite() {
+  pkgdesc="An iptables-based firewall for Linux systems (with IPv6 support) ('lite' version)"
+  depends=('shorewall')
+
+  cd "$srcdir/shorewall6-lite-$pkgver"
+
+  do_install '' 6
+}
+
+do_install() {
+  local _conf_prefix=$1
+  local _name_suffix=$2
+
+  cp init.archlinux.sh init.sh
+  DEST=/etc/rc.d INIT=shorewall$_name_suffix-lite PREFIX="$pkgdir" ./install.sh
+
+  chmod 755 "$pkgdir/etc/rc.d/shorewall$_name_suffix-lite"
+  chmod -R 644 "$pkgdir/etc/shorewall$_name_suffix-lite/"
+  chmod 755 "$pkgdir/etc/shorewall$_name_suffix-lite/"
+  chmod 644 "$pkgdir/usr/share/shorewall$_name_suffix-lite/modules"
+}
+
+# vim:set ts=2 sw=2 et:
