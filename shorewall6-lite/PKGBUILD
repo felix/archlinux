@@ -1,14 +1,14 @@
 # Maintaner: Felix Hanley <felix@seconddrawer.com.au>
-pkgname=('shorewall-lite')
+pkgname=('shorewall6-lite')
 pkgver=4.4.17
 pkgrel=1
-pkgdesc="An iptables-based firewall for Linux systems ('lite' version)"
 arch=('any')
 url="http://www.shorewall.net/"
 license=('GPL')
+pkgdesc="An iptables-based firewall for Linux systems (with IPv6 support) ('lite' version)"
 depends=('iptables' 'iproute2')
-source=(http://www.shorewall.net/pub/shorewall/4.4/shorewall-$pkgver/$pkgname-$pkgver.tar.bz2)
-md5sums=('51dd693cecfc8ddf4e2fae00cfd17a6d')
+source=(http://www.shorewall.net/pub/shorewall/4.4/shorewall-$pkgver/shorewall6-lite-$pkgver.tar.bz2)
+md5sums=('57deb49ba7c74c14fc5da0beff3d31cc')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
